@@ -14,7 +14,7 @@
 # under the License.
 import getpass
 import os
-import ssl as _ssl
+import ssl
 import socket
 import typing
 import unittest
@@ -451,9 +451,9 @@ class TestTLSHandshakeTimeoutCleanup(AsyncTestCase):
         port = server_sock.getsockname()[1]
         server_sock.listen(1)
 
-        ctx = _ssl.SSLContext(_ssl.PROTOCOL_TLS_CLIENT)
+        ctx = ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
         ctx.check_hostname = False
-        ctx.verify_mode = _ssl.CERT_NONE
+        ctx.verify_mode = ssl.CERT_NONE
 
         # Count open fds before (Linux /proc/self/fd)
         try:
